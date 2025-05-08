@@ -7,3 +7,7 @@
 # Rolled CodeSquad Comics into React
 # Added some states and effects. 
 # Login, Signup, Submission events coming soon...
+
+# May 7, 2025
+# Previously added login, signup, and submission events
+# Installed Node.js and added some GET routes. Tested and approved!
