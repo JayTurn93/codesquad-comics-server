@@ -2,14 +2,14 @@
   "name": "codesquad-comics-client",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.0"
@@ -23,6 +23,20 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.10",
     "vite": "^6.2.0"
-  }
+  },
+  "description": "codeaquad comics project",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JayTurn93/codesquad-comics-server.git"
+  },
+  "author": "Jalysa Turner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JayTurn93/codesquad-comics-server/issues"
+  },
+  "homepage": "https://github.com/JayTurn93/codesquad-comics-server#readme"
 }
