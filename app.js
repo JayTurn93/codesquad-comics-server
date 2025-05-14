@@ -5,15 +5,15 @@ const helmet = require("helmet");
 const cors = require("cors");
 const app = express();
 const PORT = 8080;
-const bookRoutes = require("./routes/bookRoutes")
+
 //-------------MIDDLEWARE---------------
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(cors());
-app.use(express.urlencoded());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname + "/public")));
-
+const bookRoutes = require("./routes/bookRoutes")
 //------------SEND ROUTES----------------
 // app.get("/", (request, response, next) => {
 //     response.send("This route points to the Home page")
