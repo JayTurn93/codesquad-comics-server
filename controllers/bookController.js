@@ -19,13 +19,13 @@ const getAllBooks = async (request, response, next) => {
 }
 
 const getBook = async (request, response, next) => {
-    const {id} = request.params;
+    const {_id} = request.params;
 
     try {
-        const book = booksData.find((book) => book.id === id);
-        return response.status(400).json({
+        const foundBook = booksData.find((book) => book._id === _id);
+        return response.status(200).json({
             success: {message: "We have located the book by ID"},
-            data:{book},
+            data:{data: foundBook},
             statusCode: 200,
         });
     } catch (error) {
@@ -65,7 +65,7 @@ const createBook = async (request, response, next) => {
 };
 
 const updateBook = async (request, response, next) => {
-    const {id} = request.params;
+    const {_id} = request.params;
     const { title, author, publisher, genre, pages, rating, synopsis, imageUrl } = request.body;
     
     
@@ -95,10 +95,10 @@ const updateBook = async (request, response, next) => {
 };
 
 const deleteBook = async (request, response, next) => {
-    const {id} = request.params;
+    const {_id} = request.params;
 
     try {
-        const books = booksData.filter((book) => book.id !== id);
+        const books = booksData.filter((book) => book._id !== _id);
         
         return response.status(200).json({
             success:{message: "We have deleted that comic."},
