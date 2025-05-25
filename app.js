@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname + "/public")));
 const bookRoutes = require("./routes/bookRoutes");
 const authRoutes = require("./routes/authRoutes");
+
 //------------SEND ROUTES----------------
 // app.get("/", (request, response, next) => {
 //     response.send("This route points to the Home page")
@@ -42,8 +43,6 @@ const authRoutes = require("./routes/authRoutes");
 
 
 //-------------REFACORED-----------------
-
-
 app.get("/", (request, response, next) => {
     response.status(200).json({
         success: { message: "This route points to the Home page" },
