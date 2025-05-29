@@ -9,7 +9,6 @@ const getAllBooks = async (request, response, next) => {
         return response.status(200).json({
             success: {message: "We got all the books."},
             data: {books},
-            statusCode: 200,
         });
     } catch (error) {
         return next(error)

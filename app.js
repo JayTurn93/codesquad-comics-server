@@ -1,3 +1,6 @@
+require("dotenv").config();
+require("./config/connection");
+// require("./config/authStrategy");
 const express = require("express");
 const morgan = require("morgan");
 const path = require("node:path");
@@ -15,7 +18,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname + "/public")));
 const bookRoutes = require("./routes/bookRoutes");
 const authRoutes = require("./routes/authRoutes");
-
+app.use((err, req, res, next) => {
+  try {
+    return res.status(400).json({message: "User already exist"})
+    } catch (error) {
+  return res.status(500).json({message: "Server error"})
+    }
+});
 //------------SEND ROUTES----------------
 // app.get("/", (request, response, next) => {
 //     response.send("This route points to the Home page")
