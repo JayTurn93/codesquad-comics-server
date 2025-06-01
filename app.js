@@ -20,9 +20,9 @@ const bookRoutes = require("./routes/bookRoutes");
 const authRoutes = require("./routes/authRoutes");
 app.use((err, req, res, next) => {
   try {
-    return res.status(400).json({message: "User already exist"})
+    return response.status(400).json({message: "User already exist"})
     } catch (error) {
-  return res.status(500).json({message: "Server error"})
+  return response.status(500).json({message: "Server error"})
     }
 });
 //------------SEND ROUTES----------------

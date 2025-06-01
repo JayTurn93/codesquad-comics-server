@@ -30,7 +30,7 @@ const getBook = async (request, response, next) => {
         }
         return response.status(200).json({
             success: {message: "We have located the book by ID"},
-            data:{data: foundBook},
+            data:{book},
             statusCode: 200,
         });
     } catch (error) {

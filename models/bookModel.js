@@ -33,6 +33,7 @@ const bookSchema = new Schema ({
 
 });
 
-const Book = mongoose.model("Book", bookSchema);
+const Book = mongoose.model("Comic", bookSchema);
+//chnage from book to Comic above to successfully get boooks
 
 module.exports = Book;
