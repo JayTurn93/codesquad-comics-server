@@ -24,7 +24,7 @@ const getBook = async (request, response, next) => {
         if (!_id) {
             throw new Error("ID required.")
         }
-        const book = Book.findById(_id);
+        const book = await Book.findById(_id);
         if (!book) {
             throw new Error("Book not found.")
         }
@@ -45,7 +45,7 @@ const createBook = async (request, response, next) => {
         if (!title || !author || !pages) {
             throw new Error("Enter missing fields.")
         }
-        const newBook = new Book({
+        const newBook = await new Book({
             title, 
             author,
             publisher,
