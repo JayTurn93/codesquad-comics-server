@@ -8,7 +8,7 @@ router.post("/register", register);
 router.post("/login", login,
     passport.authenticate("local", {
         failureRedirect: "/login/error",
-        failureMessage
+        failureMessage: true,
     })
 );
 router.get("/login/error", (request, response, next) => {

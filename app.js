@@ -62,5 +62,5 @@ app.use("/auth", authRoutes);
 app.use("/api/books", bookRoutes);
 app.listen(PORT, () => {
     console.log(`The server is listening on port ${PORT}`)
-    console.log(`(http://localhost:${PORT}/`)
+    console.log(`http://localhost:${PORT}/`)
 });

@@ -1,15 +1,13 @@
 const { request, response } = require("express");
 const passport = require("passport");
-const bcrypt = require("../models/userModel");
+const bcrypt = require("bcrypt");
 const User = require("../models/userModel");
 
 
 const register = async (request, response, next) => {
     const {firstName, lastName, usenName, password, googleId, githubId} = request.body;
     console.log(request.body);
-    if (error) {
-        return next(error);
-    } else if (!firstName || !username || !password) {
+    if (!firstName || !username || !password) {
         return response.status(400).json({
             error: {message: "Missing required fields."},
             statusCode: 400,
@@ -23,7 +21,6 @@ const register = async (request, response, next) => {
                 username: username,
                 password: hashedPassword,
                 googleId: "",
-                githubId: githubId,
             });
         
             await newUser.save();
@@ -73,8 +70,6 @@ const login = async (request, response, next) => {
 };
 
 const localLogin = async (request, response, next) => {
-    const userCopy = { ...request.user._doc };
-    userCopy.password = undefined;
 
     passport.authenticate("local", (error, user, info) => {
         if (error) {
@@ -85,14 +80,19 @@ const localLogin = async (request, response, next) => {
                 error: {message: "There is no user detected. Try again"},
             });
         }
+        request.login(user, (error) => {
+            if (error) {
+                return next(error)
+            }
         const userCopy = {...request.user._doc};
         userCopy.password = undefined;
-        console.log(userCopy);
+        console.log(userCopy)
         response.status(200).json({
             success: {message: "Local Login Complete"},
             data: {user: userCopy},
             statusCode: 200,
         });
+       }) 
     })
 };
 

@@ -20,19 +20,17 @@ const getBook = async (request, response, next) => {
 
     try {
         // const foundBook = booksData.find((book) => book._id === _id);
-
         if (!_id) {
             throw new Error("ID required.")
         }
-        const book = await Book.findById(_id);
+        const book = await Book.findById(_id)
         if (!book) {
             throw new Error("Book not found.")
         }
         return response.status(200).json({
             success: {message: "We have located the book by ID"},
-            data:{book},
-            statusCode: 200,
-        });
+            data: {book},
+        })
     } catch (error) {
         return next(error)
     };
@@ -45,7 +43,7 @@ const createBook = async (request, response, next) => {
         if (!title || !author || !pages) {
             throw new Error("Enter missing fields.")
         }
-        const newBook = await new Book({
+        const newBook = new Book({
             title, 
             author,
             publisher,
